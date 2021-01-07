@@ -13,7 +13,7 @@ export default class extends AbstractView {
       </div>
       <div class="carupdate-container" id="carupdate-container">
       <div class="titlebox-updatecar">
-          <h1>Uppdatera bil</h1>
+          <h1>Lägg till bil</h1>
           </div>
       <div class="car-update">
       <form  autocomplete="off"  target="">
@@ -33,6 +33,10 @@ export default class extends AbstractView {
       <label class ="car-details-label" for="car-details">Detaljer</label><br /> 
       
       <input class ="car-details" name="car-details" type="text" value="" /> <br /> 
+      
+      <label class ="car-type-label" for="car-type">Typ</label><br /> 
+      
+      <input class ="car-type" name="car-type" type="text" value="" /> <br /> 
       
       <div class="buttons-div">
 	    <button class="backBtn" type="submit" value="Submit">Tillbaka</button>

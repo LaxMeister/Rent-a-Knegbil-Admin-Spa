@@ -6,6 +6,7 @@ export default async function () {
   let dateInput = document.querySelector(".car-date");
   let bookedInput = document.querySelector(".car-booked");
   let detailsInput = document.querySelector(".car-details");
+  let typeInput = document.querySelector(".car-type");
   let backBtn = document.querySelector(".backBtn");
   let updateBtn = document.querySelector(".updateBtn");
 
@@ -21,6 +22,7 @@ export default async function () {
       model: modelInput.value,
       price: priceInput.value,
       details: detailsInput.value,
+      type: typeInput.value,
     };
 
     console.log(newCar);
@@ -28,7 +30,7 @@ export default async function () {
     let request = new XMLHttpRequest();
     request.onload = function (e) {
       let result = request.response;
-      alert("CAR UPDATED!");
+      alert("Bil: " + nameInput.value + " " + modelInput.value + " Är tillagd");
       window.location.href = "/cars";
     };
     request.open("POST", url, true);

@@ -57,7 +57,25 @@ export default class extends AbstractView {
       </div>
       </form>
       </div>
-      
+      <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+        <span class="close">&times;</span>
+          <h2 class="modal-header-h2">VÄNTA!</h2>
+        </div>
+        <div class="modal-body">
+          <p class="modal-body-p"></p>
+          <div class="modalBtns">
+          <button class="modalRemoveBtn">Ta Bort</button>
+          <button class="modalCloseBtn">Stäng</button>
+         </div>
+        </div>
+       
+      </div>
+    
+    </div>
       </div>
       
         

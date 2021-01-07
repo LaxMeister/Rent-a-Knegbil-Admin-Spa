@@ -25,10 +25,9 @@ export default async function CustomerList() {
     e.preventDefault();
     window.location.href = "/addCar";
   });
-
   setTimeout(() => {
     listCars();
-  }, 100);
+  }, 500);
 
   fetch("http://localhost:8081/api/v1/cars", {
     credentials: "include",
@@ -98,7 +97,9 @@ export default async function CustomerList() {
     let getNode = event.currentTarget.id;
     for (var i = 0; i < getRows.length; i++) {
       if (getNode == getRows[i].id) {
-        console.log(MyCars[getNode - 1].name);
+        console.log(
+          "CarID: " + MyCars[getNode - 1].id + " " + "Node ID: " + getNode
+        );
         sessionStorage.setItem("carID", JSON.stringify(MyCars[getNode - 1].id));
         sessionStorage.setItem(
           "carName",

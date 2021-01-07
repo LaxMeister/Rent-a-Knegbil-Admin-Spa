@@ -10,6 +10,7 @@ export default async function () {
   let backBtn = document.querySelector(".backBtn");
   let updateBtn = document.querySelector(".updateBtn");
   let removeBtn = document.querySelector(".removeBtn");
+  const rootDiv = document.querySelector(".carupdate-container");
 
   idInput.value = JSON.parse(sessionStorage.getItem("carID"));
   nameInput.value = JSON.parse(sessionStorage.getItem("carName"));
@@ -35,6 +36,7 @@ export default async function () {
       date: dateInput.value,
       booked: bookedInput.value,
       details: detailsInput.value,
+      type: typeInput.value,
     };
 
     console.log(updatedCar);
@@ -42,7 +44,9 @@ export default async function () {
     let request = new XMLHttpRequest();
     request.onload = function (e) {
       let result = request.response;
-      alert("CAR UPDATED!");
+      alert(
+        "Bil: " + nameInput.value + " " + modelInput.value + " Har uppdateras"
+      );
       window.location.href = "/cars";
     };
     request.open("PUT", url, true);
@@ -55,7 +59,19 @@ export default async function () {
     console.log(request.response);
   });
 
-  removeBtn.addEventListener("click", (e) => {
+  let modal = document.getElementById("myModal");
+  let btn = document.getElementById("myBtn");
+  let span = document.getElementsByClassName("close")[0];
+  let modalRemoveBtn = document.querySelector(".modalRemoveBtn");
+  let modalCloseBtn = document.querySelector(".modalCloseBtn");
+  let modalParagraf = document.querySelector(".modal-body-p");
+  modalParagraf.innerHTML =
+    "Vill du verkligen ta bort: " + nameInput.value + " " + modelInput.value;
+
+  modalCloseBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+  modalRemoveBtn.addEventListener("click", (e) => {
     e.preventDefault();
     let carToRemove = {
       id: idInput.value,
@@ -85,6 +101,21 @@ export default async function () {
     request.send(removeCarJson);
     console.log(request.response);
   });
+
+  removeBtn.onclick = function (e) {
+    e.preventDefault();
+    modal.style.display = "block";
+  };
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 
   return;
 }
